@@ -1,4 +1,5 @@
 <main class="hero">
+    <link rel="stylesheet" href="assets/css/style.css">
     <div class="hero-text">
         <h1>Hi, I'm <span>OJO</span></h1>
         <h2>Software Engineering Student & Web Developer</h2>
