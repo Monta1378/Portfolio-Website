@@ -77,8 +77,9 @@ $result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
     <body>
         <div class="sidebar">
             <h2>OJO Admin</h2>
-            <a href="#">Dashboard</a>
+            <a href="dashboard.php">Dashboard</a>
             <a href="messages.php">Messages</a>
+            <a href="projects.php">Projects</a>
             <a href="../index.php">View Website</a>
             <a href="logout.php">Logout</a>
         </div>

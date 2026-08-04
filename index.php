@@ -1,3 +1,4 @@
+<?php include 'includes/header.php'; ?>
 <main class="hero">
     <link rel="stylesheet" href="assets/css/style.css">
     <div class="hero-text">
@@ -8,3 +9,4 @@
         <a href="pages/contact.php" class="btn btn-secondary">contact Me</a>
     </div>
 </main>
+<?php include 'includes/footer.php';?>
