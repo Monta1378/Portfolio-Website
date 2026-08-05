@@ -1,5 +1,6 @@
 <?php
-include '../includes/db.php';
+include "../includes/db.php";
+include "../includes/header.php";
 $result = $conn->query("SELECT * FROM projects ORDER BY created_at DESC");
 ?>
 
@@ -24,14 +25,14 @@ $result = $conn->query("SELECT * FROM projects ORDER BY created_at DESC");
             }
             .grid{
                 display: grid;
-                grid-template-columns: repeat(auto-fit,minimac(320px,1fr));
+                grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
                 gap: 20px;
             }
             .card{
                 background: white;
                 border-radius: 10px;
                 padding: 20px;
-                box-shado: 0 2px 8px rgba(0,0,0,.1);
+                box-shadow: 0 2px 8px rgba(0,0,0,.1);
             }
             .card h2{
                 margin-top: 0;
@@ -55,6 +56,13 @@ $result = $conn->query("SELECT * FROM projects ORDER BY created_at DESC");
             .btn:hover{
                 background: #1d4ed8;
             }
+            .project-image{
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+                border-radius: 10px;
+                margin-bottom: 15px;
+            }
         </style>
     </head>
     <body>
@@ -64,10 +72,16 @@ $result = $conn->query("SELECT * FROM projects ORDER BY created_at DESC");
                 <?php while($project = $result->fetch_assoc()){?>
             <div class="card">
                 <h2><?= htmlspecialchars($project['title']) ?></h2>
+                <?php if (!empty($project['image'])){ ?>
+                <img src="../uploads/projects/<?= htmlspecialchars($project['image']) ?>"
+                alt="<?= htmlspecialchars($project['title']) ?>"
+                class="project-image">
+            <?php } ?>
                 <p><?= nl2br(htmlspecialchars($project['description'])) ?></p>
                 <p class="tech"><?= htmlspecialchars($project['technologies']) ?></p>
                 <div class="buttons">
                     <?php if(!empty($project['github'])){ ?>
+                    <a class="btn" href="project.php?id=<?= $project['id']; ?>">View Details</a>
                 <a class="btn" href="<?= htmlspecialchars($project['github']) ?>" target="_blank">GitHub</a>
             <?php } ?>
             <?php if(!empty($project['demo'])){ ?>
@@ -80,3 +94,4 @@ $result = $conn->query("SELECT * FROM projects ORDER BY created_at DESC");
         </div>
     </body>
 </html>
+<?php include "../includes/footer.php";?>

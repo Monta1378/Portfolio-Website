@@ -11,18 +11,25 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     $technologies = trim($_POST["technologies"]);
     $github = trim($_POST["github"]);
     $demo = trim($_POST["demo"]);
+    $image = "";
+    if (!empty($_FILES["image"]["name"])){
+        $image = time() .  "_" . basename($_FILES["image"]["name"]);
+        $target = "../uploads/projects/" . $image;
+        move_uploaded_file($_FILES["image"]["tmp_name"], $target);
+    }
 
     $stmt = $conn->prepare(
-        "INSERT INTO projects(title,description,technologies,github,demo)
-        VALUES(?,?,?,?,?)"
+        "INSERT INTO projects(title,description,technologies,github,demo,image)
+        VALUES(?,?,?,?,?,?)"
     );
     $stmt->bind_param(
-        "sssss",
+        "ssssss",
         $title,
         $description,
         $technologies,
         $github,
-        $demo
+        $demo,
+        $image
     );
     if ($stmt->execute()){
         header("Location: projects.php");
@@ -73,12 +80,13 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
     <body>
         <div class="container">
             <h2>Add New Project</h2>
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data">
                 <input type="text" name="title" placeholder="Project Title" required>
                 <textarea name="description" rows="5" placeholder="Project Description" required></textarea>
                     <input type="text" name="technologies" placeholder="Technologies (HTML, CSS, PHP...)">
                     <input type="url" name="github" placeholder="GitHub URL">
                     <input type="url" name="demo" placeholder="Live Demo URL">
+                    <input type="file" name="image" accept="image/*">
                     <button type="submit">Save Project</button>
             </form>
         </div>

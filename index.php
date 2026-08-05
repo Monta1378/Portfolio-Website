@@ -1,12 +1,14 @@
 <?php include 'includes/header.php'; ?>
 <main class="hero">
-    <link rel="stylesheet" href="assets/css/style.css">
     <div class="hero-text">
+        <p class="welcome">👋 Welcome to my portfolio</p>
         <h1>Hi, I'm <span>OJO</span></h1>
-        <h2>Software Engineering Student & Web Developer</h2>
+        <h2>Mathematics & Computer Science Student</h2>
         <p>I build responsive websites and web applications using HTML, CSS, JavaScript, PHP, and MySQL.</p>
-        <a href="pages/projects.php">Projects</a>
-        <a href="pages/contact.php" class="btn btn-secondary">contact Me</a>
+        <div class="buttons">
+            <a href="pages/projects.php" class="btn">View Projects</a>
+            <a href="pages/contact.php" class="btn btn-secondary">contact Me</a>
+        </div>
     </div>
 </main>
 <?php include 'includes/footer.php';?>

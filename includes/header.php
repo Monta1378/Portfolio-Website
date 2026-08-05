@@ -9,8 +9,10 @@
     </head>
 <body>
 
-<header>
-    <h1>OJO Portfolio</h1>
+<header class="navbar">
+    <div class="logo">
+        OJO<span>Net</span>
+    </div>
 
     <nav>
         <a href="/Portfolio-Website/">HOME</a>
@@ -18,6 +20,4 @@
         <a href="/Portfolio-Website/pages/projects.php">Projects</a>
         <a href="/Portfolio-Website/pages/contact.php">Contact</a>
     </nav>
-
-    <hr>
 </header>
