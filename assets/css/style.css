@@ -105,26 +105,8 @@ body {
     padding: 40px;
 }
 
-.hero h1 {
-    font-size: 60px;
-    margin-bottom: 10px;
-}
-
-.hero span {
-    color: #38bdf8;
-}
-
-.hero h2 {
-    color: #d1d5db;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    max-width: 700px;
-    margin: auto;
-    line-height: 1.8;
-    color: #9ca3af;
-    font-size: 18px;
+.hero-text {
+    max-width: 800px;
 }
 
 .welcome {
@@ -134,13 +116,13 @@ body {
     margin-bottom: 20px;
 }
 
-.hero-text {
-    max-width: 800px;
-}
-
 .hero h1 {
     font-size: 72px;
     margin-bottom: 20px;
+}
+
+.hero span {
+    color: #38bdf8;
 }
 
 .hero h2 {
@@ -150,8 +132,11 @@ body {
 }
 
 .hero p {
-    font-size: 20px;
+    max-width: 700px;
+    margin: auto;
     line-height: 1.8;
+    color: #9ca3af;
+    font-size: 20px;
 }
 
 .buttons {
@@ -179,4 +164,104 @@ body {
 
 .btn-secondary:hover {
     background: #4b5563;
+}
+/*About Page*/
+.about-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 50px 20px;
+}
+.about-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+.about-section p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+.tech-stack {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+.tech-stack span {
+    padding: 8px 16px;
+    border: 1px solid #374151;
+    border-radius: 20px;
+    color: #9ca3af;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 18px;
+        text-align: center;
+    }
+    header h1 {
+        font-size: 28px;
+    }
+    .navbar {
+        padding: 15px 20px;
+    }
+    .logo {
+        font-size: 24px;
+    }
+    nav {
+        margin-top: 20px;
+        gap: 15px;
+    }
+    nav a {
+        display: inline-block;
+        margin: 8px 10px;
+        font-size: 13px;
+    }
+    main {
+        width: 100%;
+        margin: 20px auto;
+        padding: 20px;
+    }
+    .hero {
+        min-height: 70vh;
+        padding: 30px 20px;
+    }
+    .hero h1 {
+        font-size: 42px;
+    }
+    .hero h2 {
+        font-size: 24px;
+    }
+    .hero p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+    .btn {
+        padding: 12px 22px;
+        margin: 10px 5px;
+    }
+    form {
+        width: 100%;
+        max-width: 600px;
+    }
+    input,
+    textarea {
+        width: 100%;
+        font-size: 16px;
+    }
+    textarea {
+        min-height: 180px;
+    }
+    button {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+    }
+    .tech-stack {
+        gap: 8px;
+    }
+    .tech-stack span {
+        padding: 7px 12px;
+        font-size: 13px;
+    }
 }

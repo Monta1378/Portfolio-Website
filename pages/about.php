@@ -2,7 +2,7 @@
 include '../includes/header.php';
 ?>
 
-<main>
+<main class="about-section">
     <h2>About Me</h2>
     <p>Hello! My name is OJO</p>
     <p>I am a Mathematics and Computer Science student who enjoys building websites, learning software engineering, and solving real-world problems with technology.</p>

@@ -6,6 +6,9 @@
         <title>OJO Portfolio</title>
 
         <link rel="stylesheet" href="/Portfolio-Website/assets/css/style.css">
+        <?php if (isset($page_css)): ?>
+        <link rel="stylesheet" href="/Portfolio-Website/assets/css/<?= $page_css ?>">
+    <?php endif; ?>
     </head>
 <body>
 

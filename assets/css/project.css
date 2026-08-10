@@ -1,0 +1,130 @@
+.project-details {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.project-details h1 {
+    font-size: 42px;
+    margin-bottom: 30px;
+}
+
+/* Project Image */
+.project-image-large {
+    width: 100%;
+    max-width: 650px;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.project-image-large:hover {
+    transform: scale(1.02);
+}
+
+/* Sections */
+.project-section {
+    margin-top: 35px;
+}
+
+.project-section h2 {
+    margin-bottom: 15px;
+    color: #38bdf8;
+    font-size: 26px;
+}
+
+.project-section p {
+    line-height: 1.8;
+    color: #d1d5db;
+    font-size: 18px;
+}
+
+/* Technologies */
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tech {
+    background: #2563eb;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Buttons */
+.project-buttons {
+    margin-top: 35px;
+}
+
+.project-buttons .btn {
+    margin-right: 15px;
+}
+
+/* Back Link */
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    color: #38bdf8;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .project-details {
+        width: 95%;
+        margin: 30px auto;
+        padding: 10px;
+    }
+    .project-details h1 {
+        font-size: 34px;
+        line-height: 1.2;
+        margin-bottom: 25px;
+    }
+    .project-image-large {
+        width: 100%;
+        max-width: 100%;
+        max-height: 400px;
+        object-fit: contain;
+        margin-bottom: 30px;
+    }
+    .project-section {
+        margin-top: 30px;
+    }
+    .project-section h2 {
+        font-size: 24px;
+    }
+    .project-section p {
+        font-size: 16px;
+        line-height: 1.7;
+    }
+    .tech-list {
+        gap: 8px;
+    }
+    .tech {
+        padding: 7px 13px;
+        font-size: 13px;
+    }
+    .project-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .project-buttons .btn {
+        margin-right: 0;
+    }
+    .back-link {
+        margin-top: 30px;
+    }
+}

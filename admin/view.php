@@ -9,20 +9,26 @@ if (!isset($_GET['id'])){
     header("Location: messages.php");
     exit();
 }
-$id = $_GET['id'];
+$id = (int) $_GET['id'];
 $stmt = $conn->prepare("SELECT * FROM messages WHERE id=?");
-$stmt->bind-param("i", $id);
+if (!$stmt) {
+    die("Prepare failed: " . $conn->error);
+}
+$stmt->bind_param("i", $id);
 $stmt->execute();
 $result = $stmt->get_result();
-if ($result->nun_rows == 0){
+if ($result->num_rows == 0){
     die("Message not found.");
 }
 $message = $result->fetch_assoc();
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>View Message</title>
         <style>
             body{
@@ -36,10 +42,10 @@ $message = $result->fetch_assoc();
                 background: white;
                 padding: 25px;
                 border-radius: 10px;
-                box-shadow: 0 5px 10px rgba(0.0.0,.1);
+                box-shadow: 0 5px 10px rgba(0,0,0,.1);
             }
             h2{
-                color: #2563eb:
+                color: #2563eb;
             }
             p{
                 margin: 15px 0;
@@ -56,17 +62,20 @@ $message = $result->fetch_assoc();
                 padding: 10px 20px;
                 border-radius: 5px;
             }
+            a:hover{
+                background: #1d4ed8;
+            }
         </style>
     </head>
     <body>
         <div class="card">
             <h2>Message Details</h2>
-            <p><strong>Name:</strong> <?php echo htmlspecialchars($message['name']); ?></p>
-            <p><strong>Email:</strong> <?php echo htmlspecialchars($message['email']); ?></p>
-            <p><strong>Subject:</strong> <?php echo htmlspecialchars($message['subject']); ?></p>
-            <p><strong>Date:</strong> <?php echo $message['created_at']; ?></p>
+            <p><strong>Name:</strong> <?= htmlspecialchars($message['name']); ?></p>
+            <p><strong>Email:</strong> <?= htmlspecialchars($message['email']); ?></p>
+            <p><strong>Subject:</strong> <?= htmlspecialchars($message['subject']); ?></p>
+            <p><strong>Date:</strong> <?= htmlspecialchars($message['created_at']); ?></p>
             <p><strong>Message:</strong></p>
-            <p><?php echo nl2br(htmlspecialchars($message['message'])); ?></p>
+            <p><?= nl2br(htmlspecialchars($message['message'])); ?></p>
             <a href="messages.php">← Back to Messages</a>
         </div>
     </body>

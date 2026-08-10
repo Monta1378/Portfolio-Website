@@ -23,8 +23,11 @@ include "../includes/header.php";
     <img src="../uploads/projects/<?= htmlspecialchars($project['image']); ?>"
     alt="<?= htmlspecialchars($project['title']); ?>"
     class="project-image-large">
+    <section class="project-section">
     <h2>Description</h2>
     <p><?= nl2br(htmlspecialchars($project['description']))?></p>
+    </section>
+    <section class="project-section">
     <h2>Technologies</h2>
     <div class="tech-list">
         <?php
@@ -34,12 +37,11 @@ include "../includes/header.php";
             <span class="tech"><?= htmlspecialchars(trim($tech)); ?></span>
         <?php } ?>
     </div>
-    <br>
+    </section>
     <div class="project-buttons">
         <a class="btn" href="<?= htmlspecialchars($project['github'])?>" target="_blank">GitHub</a>
         <a class="btn btn-secondary" href="<?= htmlspecialchars($project['demo'])?>" target="_blank">Live demo</a>
     </div>
-    <br><br>
-    <a href="projects.php">← Back to Projects</a>
+    <a class="back-link" href="projects.php">← Back to Projects</a>
 </main>
 <?php include "../includes/footer.php"; ?>

@@ -35,7 +35,7 @@ $result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
                 display: block;
                 color: white;
                 text-decoration: none;
-                margin: 15px o;
+                margin: 15px 0;
             }
             .sidebar a:hover{
                 color: #38bdf8;
@@ -75,6 +75,7 @@ $result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
             <h2>OJO Admin</h2>
             <a href="dashboard.php">Dashboard</a>
             <a href="messages.php">Messages</a>
+            <a href="projects.php">Projects</a>
             <a href="../index.php">View Website</a>
             <a href="logout.php">Logout</a>
         </div>
@@ -97,7 +98,7 @@ $result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
                 <td><?php echo htmlspecialchars($row['subject']); ?></td>
                 <td><?php echo $row['created_at']; ?></td>
                 <td>
-                    <a class="btn" style="background: #2563eb;" href="view.php?id<?php echo $row['id']; ?>">View</a>
+                    <a class="btn" style="background: #2563eb;" href="view.php?id=<?php echo $row['id']; ?>">View</a>
                     <a class="btn" href="delete.php?id=<?php echo $row['id']; ?>"
                     onclick="return confirm('Delete this message?');"
                     >Delete</a>
