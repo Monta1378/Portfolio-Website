@@ -1,0 +1,14 @@
+# Private configuration
+.env
+.env.*
+!.env.example
+
+# Database credentials and local configuration
+config.local.php
+includes/db.php
+password.php
+
+# Private SQL exports
+*.sql
+sql/
+/includes/db.php
