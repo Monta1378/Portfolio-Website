@@ -1,10 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin'])){
-    header("Location: login.php");
-    exit();
-}
-
+require_once "../includes/auth.php";
 include "../includes/db.php";
 $totalMessages = $conn->query("SELECT COUNT(*) AS total FROM messages");
 $total = $totalMessages->fetch_assoc()['total'];
@@ -15,64 +10,9 @@ $result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>OJO Admin Dashboard</title>
-        <style>
-            body{
-                margin: 0;
-                font-family: Arial, sans-serif;
-                background: #f4f4f4;
-            }
-            .sidebar{
-                position: fixed;
-                width: 230px;
-                height: 100vh;
-                background: #1f2937;
-                color: white;
-                padding: 20px;
-            }
-            .sidebar h2{
-                margin-bottom: 30px;
-            }
-            .sidebar a{
-                display: block;
-                color: white;
-                text-decoration: none;
-                margin: 15px 0;
-            }
-            .sidebar a:hover{
-                color: #38bdf8;
-            }
-            .main{
-                margin-left: 250px;
-                padding: 30px;
-            }
-            .card{
-                background: white;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 0 10px rgba(0,0,0,.1);
-                width: 250px;
-                margin-bottom: 30px;
-            }
-            table{
-                width: 100%;
-                border-collapse: collapse;
-                background: white;
-            }
-            table th{
-                background: #2563eb;
-                color: white;
-            }
-            table th,
-            table td{
-                padding: 12px;
-                border: 1px solid #ddd;
-                text-align: left;
-            }
-            tr:nth-child(even){
-                background: #f8f8f8;
-            }
-        </style>
+        <link rel="stylesheet" href="../assets/css/admin.css?v=<?= is_file(__DIR__ . '/../assets/css/admin.css') ? (int) filemtime(__DIR__ . '/../assets/css/admin.css') : 1 ?>">
     </head>
     <body>
         <div class="sidebar">
@@ -90,6 +30,7 @@ $result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
                 <h1><?php echo $total; ?></h1>
             </div>
             <h2>Recent Messages</h2>
+            <div class="table-container">
             <table>
                 <tr>
                     <th>ID</th>
@@ -110,6 +51,7 @@ $result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
                     </tr>
                     <?php } ?>
             </table>
+            </div>
         </div>
     </body>
 </html>

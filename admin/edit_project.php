@@ -1,9 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin'])){
-    header("Location: login.php");
-    exit();
-}
+require_once "../includes/auth.php";
 include "../includes/db.php";
 //Get the project ID
 if (!isset($_GET['id'])){
@@ -54,57 +50,47 @@ $stmt->close();
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Edit Project</title>
-        <style>
-        body{
-            font-family: Arial, sans-serif;
-            background: #f4f4f4;
-            padding: 40px;
-        }
-        .container{
-            width: 700px;
-            margin: auto;
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-        }
-        input,
-        textarea{
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            box-sizing: border-box;
-        }
-        button{
-            background: #2563eb;
-            color: white;
-            paddding: 12px 20px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-        button:hover{
-            background: #1d4ed8;
-        }
-        .back{
-            text-decoration: none;
-            color: #2563eb;
-        }
-        </style>
+        <link rel="stylesheet" href="../assets/css/admin.css?v=<?= is_file(__DIR__ . '/../assets/css/admin.css') ? (int) filemtime(__DIR__ . '/../assets/css/admin.css') : 1 ?>">
     </head>
     <body>
-        <div class="container">
-            <h2>Edit Project</h2>
-            <form method="POST">
-                <input type="text" name="title" value="<?= htmlspecialchars($project['title']) ?>" required>
-                <textarea name="description" rows="5" required><?= htmlspecialchars($project['description']) ?></textarea>
-                <input type="text" name="technologies" value="<?= htmlspecialchars($project['technologies']) ?>">
-                <input type="url" name="github" value="<?= htmlspecialchars($project['github']) ?>">
-                <input type="url" name="demo" value="<?= htmlspecialchars($project['demo']) ?>">
-                <button type="submit">Update Project</button>
-            </form>
-            <br>
-            <a class="back" href="projects.php">← Back to Projects</a>
+        <div class="sidebar">
+            <h2>OJO Admin</h2>
+            <a href="dashboard.php">Dashboard</a>
+            <a href="messages">Messages</a>
+            <a href="projects.php">Projects</a>
+            <a href="../index.php">View Website</a>
+            <a href="logout.php">Logout</a>
+        </div>
+        <div class="main">
+            <div class="container">
+                <h1>Edit Project</h1>
+                    <form method="POST">
+                        <div class="form-group">
+                            <label for="title">Project Title</label>
+                            <input type="text" id="title" name="title" value="<?= htmlspecialchars($project['title']) ?>" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="decription" name="description" rows="6" required><?= htmlspecialchars($project['description']) ?></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="technologies">Technologies</label>
+                            <input type="text" id="technologies" name="technologies" value="<?= htmlspecialchars($project['technologies']) ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="github">GitHub</label>
+                            <input type="url" id="github" name="github" value="<?= htmlspecialchars($project['github']) ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="demo">Live Demo</label>
+                            <input type="url" id="demo" name="demo" value="<?= htmlspecialchars($project['demo']) ?>">
+                        </div>
+                        <button type="submit">Update Project</button>
+                    </form>
+                <a class="back" href="projects.php">← Back to Projects</a>
+            </div>
         </div>
     </body>
 </html>

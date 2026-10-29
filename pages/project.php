@@ -16,7 +16,8 @@ $project = $result->fetch_assoc();
 $stmt->close();
 include "../includes/header.php";
 ?>
-<link rel="stylesheet" href="../assets/css/project.css">
+<?php $projectCssPath = __DIR__ . '/../assets/css/project.css'; ?>
+<link rel="stylesheet" href="../assets/css/project.css?v=<?= is_file($projectCssPath) ? (int) filemtime($projectCssPath) : 1 ?>">
 
 <main class="project-details">
     <h1><?= htmlspecialchars($project['title']); ?></h1>

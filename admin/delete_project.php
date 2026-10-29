@@ -1,9 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin'])){
-    header("Location: login.php");
-    exit();
-}
+require_once "../includes/auth.php";
 include "../includes/db.php";
 if (isset($_GET['id'])){
     $id = (int) $_GET['id'];

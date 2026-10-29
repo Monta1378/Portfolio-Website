@@ -1,0 +1,5 @@
+Upload instructions
+
+Extract this archive into your site's htdocs folder, keeping the folders and allowing the files to overwrite. It contains the updated homepage, shared header, project-detail page, admin pages, cache headers, stylesheet versioning, and the portrait/logo assets.
+
+No visitor needs to clear their browser cache manually. PHP pages revalidate, and CSS/image URLs receive an automatic version based on each file's modification time. The project and technology totals remain database driven; the projects table must have a technologies column containing comma-separated values.

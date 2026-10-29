@@ -1,9 +1,5 @@
 <?php
-session_start();
-if (!isset($_SESSION['admin'])){
-    header("Location: login.php");
-    exit();
-}
+require_once "../includes/auth.php";
 include "../includes/db.php";
 $result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
 ?>
@@ -14,61 +10,7 @@ $result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Messages</title>
-        <style>
-            body{
-                margin: 0;
-                font-family: Arial, sans-serif;
-                background: #f4f4f4;
-            }
-            .sidebar{
-                position: fixed;
-                width: 230px;
-                height: 100vh;
-                background: #1f2937;
-                color: white;
-                padding: 20px;
-            }
-            .sidebar h2{
-                margin-bottom: 30px;
-            }
-            .sidebar a{
-                display: block;
-                color: white;
-                text-decoration: none;
-                margin: 15px 0;
-            }
-            .sidebar a:hover{
-                color: #38bdf8;
-            }
-            .main{
-                margin-left: 250px;
-                padding: 30px;
-            }
-            table{
-                width: 100%;
-                border-collapse: collapse;
-                background: white;
-            }
-            th,td{
-                padding: 12px;
-                border: 1px solid #ddd;
-                text-align: left;
-            }
-            th{
-                background: #2563eb;
-                color: white;
-            }
-            .btn{
-                background: red;
-                color: white;
-                padding: 6px 10px;
-                text-decoration: none;
-                border-radius: 5px;
-            }
-            .btn:hover{
-                background: darkred;
-            }
-        </style>
+        <link rel="stylesheet" href="../assets/css/admin.css?v=<?= is_file(__DIR__ . '/../assets/css/admin.css') ? (int) filemtime(__DIR__ . '/../assets/css/admin.css') : 1 ?>">
     </head>
     <body>
         <div class="sidebar">
@@ -81,6 +23,7 @@ $result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
         </div>
         <div class="main">
             <h1>All Messages</h1>
+            <div class="table-container">
             <table>
                 <tr>
                     <th>ID</th>
@@ -106,6 +49,7 @@ $result = $conn->query("SELECT * FROM messages ORDER BY created_at DESC");
             </tr>
         <?php } ?>
             </table>
+            </div>
         </div>
     </body>
 </html>
