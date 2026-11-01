@@ -12,3 +12,5 @@ password.php
 *.sql
 sql/
 /includes/db.php
+# Allow the public database structure file
+!database/schema.sql
